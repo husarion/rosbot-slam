@@ -1,0 +1,150 @@
+{
+  "configById": {
+    "3D!40jejke": {
+      "cameraState": {
+        "distance": 0.7504827842222612,
+        "perspective": true,
+        "phi": 60.34220532319342,
+        "target": [0, 0, 0],
+        "targetOffset": [0, 0, 0],
+        "targetOrientation": [0, 0, 0, 1],
+        "thetaOffset": 44.9999999999999,
+        "fovy": 45,
+        "near": 0.5,
+        "far": 5000
+      },
+      "followMode": "follow-pose",
+      "scene": {},
+      "transforms": {
+        "frame:base_link": {
+          "visible": false
+        },
+        "frame:body_link": {
+          "visible": false
+        },
+        "frame:cover_link": {
+          "visible": false
+        },
+        "frame:imu_link": {
+          "visible": false
+        },
+        "frame:camera_link": {
+          "visible": false
+        },
+        "frame:fl_range": {
+          "visible": false
+        },
+        "frame:fr_range": {
+          "visible": false
+        },
+        "frame:rl_range": {
+          "visible": false
+        },
+        "frame:rr_range": {
+          "visible": false
+        },
+        "frame:fl_wheel_link": {
+          "visible": false
+        },
+        "frame:fr_wheel_link": {
+          "visible": false
+        },
+        "frame:rl_wheel_link": {
+          "visible": false
+        },
+        "frame:rr_wheel_link": {
+          "visible": false
+        },
+        "frame:slamtec_rplidar_a2_link": {
+          "visible": false
+        },
+        "frame:laser": {
+          "visible": false
+        },
+        "frame:orbbec_astra_link": {
+          "visible": false
+        },
+        "frame:depth": {
+          "visible": false
+        }
+      },
+      "topics": {},
+      "layers": {
+        "e827a6dc-875b-448a-8475-5497577c2e1b": {
+          "visible": true,
+          "frameLocked": true,
+          "label": "URDF",
+          "instanceId": "e827a6dc-875b-448a-8475-5497577c2e1b",
+          "layerId": "foxglove.Urdf",
+          "url": "http://localhost:8080/rosbot.urdf",
+          "order": 1
+        }
+      },
+      "publish": {
+        "type": "point",
+        "poseTopic": "/move_base_simple/goal",
+        "pointTopic": "/clicked_point",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      }
+    },
+    "ImageViewPanel!4091812": {
+      "cameraTopic": "",
+      "enabledMarkerTopics": [],
+      "mode": "fit",
+      "pan": {
+        "x": 0,
+        "y": 0
+      },
+      "rotation": 0,
+      "synchronize": false,
+      "transformMarkers": false,
+      "zoom": 1
+    },
+    "Teleop!jo9z4f": {
+      "publishRate": 1,
+      "upButton": {
+        "field": "linear-x",
+        "value": 1
+      },
+      "downButton": {
+        "field": "linear-x",
+        "value": -1
+      },
+      "leftButton": {
+        "field": "angular-z",
+        "value": 1
+      },
+      "rightButton": {
+        "field": "angular-z",
+        "value": -1
+      }
+    },
+    "RosOut!b0toow": {
+      "searchTerms": [],
+      "minLogLevel": 1
+    }
+  },
+  "globalVariables": {},
+  "userNodes": {},
+  "playbackConfig": {
+    "speed": 1
+  },
+  "layout": {
+    "first": {
+      "first": "3D!40jejke",
+      "second": {
+        "first": "ImageViewPanel!4091812",
+        "second": "RosOut!b0toow",
+        "direction": "column"
+      },
+      "direction": "row",
+      "splitPercentage": 72.58448357924799
+    },
+    "second": "Teleop!jo9z4f",
+    "direction": "column",
+    "splitPercentage": 79.54319761668322
+  }
+}
