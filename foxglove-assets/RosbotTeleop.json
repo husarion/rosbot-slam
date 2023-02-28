@@ -2,13 +2,26 @@
   "configById": {
     "3D!40jejke": {
       "cameraState": {
-        "distance": 0.7504827842222612,
         "perspective": true,
-        "phi": 60.34220532319342,
-        "target": [0, 0, 0],
-        "targetOffset": [0, 0, 0],
-        "targetOrientation": [0, 0, 0, 1],
-        "thetaOffset": 44.9999999999999,
+        "distance": 1.253443265379405,
+        "phi": 60.34220532319326,
+        "thetaOffset": 44.99999999999996,
+        "targetOffset": [
+          0.0715119488983001,
+          0.05744402452486413,
+          -8.282978238024528e-19
+        ],
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
         "fovy": 45,
         "near": 0.5,
         "far": 5000
@@ -68,7 +81,39 @@
           "visible": false
         }
       },
-      "topics": {},
+      "topics": {
+        "/initialpose": {
+          "visible": true
+        },
+        "/map": {
+          "visible": true,
+          "frameLocked": false
+        },
+        "/move_base_simple/goal": {
+          "visible": true
+        },
+        "/pose": {
+          "visible": true
+        },
+        "/scan": {
+          "visible": true,
+          "colorField": "intensity",
+          "colorMode": "colormap",
+          "colorMap": "turbo"
+        },
+        "/set_pose": {
+          "visible": true
+        },
+        "/slam_toolbox/graph_visualization": {
+          "visible": true
+        },
+        "/slam_toolbox/scan_visualization": {
+          "visible": true
+        },
+        "/robot_description": {
+          "visible": true
+        }
+      },
       "layers": {
         "e827a6dc-875b-448a-8475-5497577c2e1b": {
           "visible": true,
@@ -76,7 +121,7 @@
           "label": "URDF",
           "instanceId": "e827a6dc-875b-448a-8475-5497577c2e1b",
           "layerId": "foxglove.Urdf",
-          "url": "http://localhost:8080/rosbot.urdf",
+          "url": "http://IP_PLACEHOLDER:8080/rosbot.urdf",
           "order": 1
         }
       },
@@ -103,28 +148,49 @@
       "transformMarkers": false,
       "zoom": 1
     },
-    "Teleop!jo9z4f": {
-      "publishRate": 1,
-      "upButton": {
-        "field": "linear-x",
-        "value": 1
-      },
-      "downButton": {
-        "field": "linear-x",
-        "value": -1
-      },
-      "leftButton": {
-        "field": "angular-z",
-        "value": 1
-      },
-      "rightButton": {
-        "field": "angular-z",
-        "value": -1
-      }
-    },
     "RosOut!b0toow": {
       "searchTerms": [],
       "minLogLevel": 1
+    },
+    "Teleop!jo9z4f": {
+      "publishRate": 10,
+      "upButton": {
+        "field": "linear-x",
+        "value": 0.3
+      },
+      "downButton": {
+        "field": "linear-x",
+        "value": -0.3
+      },
+      "leftButton": {
+        "field": "angular-z",
+        "value": 0.6
+      },
+      "rightButton": {
+        "field": "angular-z",
+        "value": -0.6
+      },
+      "topic": "/cmd_vel"
+    },
+    "Plot!2yal7j6": {
+      "paths": [
+        {
+          "value": "/battery.voltage",
+          "enabled": true,
+          "timestampMethod": "receiveTime"
+        }
+      ],
+      "minYValue": 6,
+      "maxYValue": 12,
+      "showXAxisLabels": true,
+      "showYAxisLabels": true,
+      "showLegend": true,
+      "legendDisplay": "floating",
+      "showPlotValuesInLegend": false,
+      "isSynced": true,
+      "xAxisVal": "timestamp",
+      "sidebarDimension": 240,
+      "foxglovePanelTitle": "Plot"
     }
   },
   "globalVariables": {},
@@ -136,7 +202,11 @@
     "first": {
       "first": "3D!40jejke",
       "second": {
-        "first": "ImageViewPanel!4091812",
+        "first": {
+          "first": "Plot!2yal7j6",
+          "second": "ImageViewPanel!4091812",
+          "direction": "column"
+        },
         "second": "RosOut!b0toow",
         "direction": "column"
       },

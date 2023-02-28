@@ -1,0 +1,39 @@
+ARG FOXGLOVE_VERSION=v1.39.1
+
+# URDF stage
+FROM husarion/rviz2:humble-nightly as urdf_builder
+RUN apt-get update -y && apt-get install -y ros-$ROS_DISTRO-xacro && \
+    source install/setup.bash && \
+    xacro /ros2_ws/src/rosbot_ros/rosbot_description/urdf/rosbot.urdf.xacro > /rosbot.urdf && \
+    xacro /ros2_ws/src/rosbot_xl_ros/rosbot_xl_description/urdf/rosbot_xl.urdf.xacro > /rosbot_xl.urdf && \
+    # Changing rotation is cause by .stl files in rosbot_ros/rosbot_description. We will change it to the .dae files.
+    sed -i 's/rpy=\"1.5707963267948966 0.0 1.5707963267948966\"/rpy=\"0.0 0.0 1.5707963267948966\"/g' /rosbot.urdf
+
+# Release stage
+FROM caddy:2.5.2-alpine
+
+ARG FOXGLOVE_VERSION
+
+RUN apk update && apk add bash
+
+SHELL ["/bin/bash", "-c"]
+
+WORKDIR /src
+COPY ./foxglove-assets/ ./
+
+COPY --from=urdf_builder /ros2_ws ./ros2_ws
+COPY --from=urdf_builder /rosbot.urdf ./rosbot.urdf
+COPY --from=urdf_builder /rosbot_xl.urdf ./rosbot_xl.urdf
+
+COPY Caddyfile /etc/caddy/Caddyfile
+COPY caddy_entrypoint.sh /caddy_entrypoint.sh
+
+EXPOSE 8081
+
+# CMD ["caddy", "file-server", "--listen", ":8080"]
+ENTRYPOINT [ "/bin/bash", "/caddy_entrypoint.sh" ]
+
+ENV PORT=8081
+
+# disable cache
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]

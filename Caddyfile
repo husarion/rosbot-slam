@@ -1,0 +1,16 @@
+# Listen on localhost on port 8081
+:{$PORT} {
+    root * /src
+    file_server
+
+    header {
+        # get rid of CORS error
+        Access-Control-Allow-Origin *
+        Access-Control-Allow-Credentials true
+        Access-Control-Allow-Methods *
+        Access-Control-Allow-Headers *
+        defer
+        # Disable caching
+        Cache-Control "no-cache, no-store, must-revalidate"
+    }
+}
